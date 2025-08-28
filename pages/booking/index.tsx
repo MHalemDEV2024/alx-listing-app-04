@@ -1,22 +1,64 @@
-import BookingForm from "@/components/booking/BookingForm";
-import OrderSummary from "@/components/booking/OrderSummary";
+// File: pages/booking/index.tsx
+import axios from "axios";
+import { useState } from "react";
 
-export default function BookingPage() {
-  const bookingDetails = {
-    propertyName: "Villa Arrecife Beach House",
-    price: 7500,
-    bookingFee: 65,
-    totalNights: 3,
-    startDate: "24 August 2024",
+export default function BookingForm() {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    cardNumber: "",
+    expirationDate: "",
+    cvv: "",
+    billingAddress: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+
+    try {
+      await axios.post("/api/bookings", formData);
+      alert("✅ Booking confirmed!");
+    } catch (error) {
+      setError("❌ Failed to submit booking.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div className="container mx-auto p-6">
-      <div className="grid grid-cols-2 gap-6">
-        <BookingForm />
-        <OrderSummary bookingDetails={bookingDetails} />
-      </div>
-    </div>
+    <form onSubmit={handleSubmit} className="space-y-3">
+      {Object.keys(formData).map((field) => (
+        <input
+          key={field}
+          name={field}
+          placeholder={field}
+          value={(formData as any)[field]}
+          onChange={handleChange}
+          className="border p-2 rounded w-full"
+          required
+        />
+      ))}
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="bg-blue-600 text-white px-4 py-2 rounded"
+      >
+        {loading ? "Processing..." : "Confirm & Pay"}
+      </button>
+
+      {error && <p className="text-red-500">{error}</p>}
+    </form>
   );
 }
-
