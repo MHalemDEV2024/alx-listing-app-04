@@ -16,7 +16,7 @@ const Header = () => {
             placeholder="Search destination..."
             className="border border-gray-300 text-sm px-3 py-1.5 rounded-full focus:outline-none focus:ring-1 focus:ring-primary"
           />
-          <Button bgColorClass = "bg-[#34967C]" label="Sign in" onClick={() => console.log("Sign in clicked")} />
+          <Button bgColorClass = "bg-p2" label="Sign in" onClick={() => console.log("Sign in clicked")} />
           <Button label="Sign up" onClick={() => console.log("Sign up clicked")} />
         </div>
       </div>

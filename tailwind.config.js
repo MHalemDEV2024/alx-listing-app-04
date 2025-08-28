@@ -1,33 +1,89 @@
-// tailwind.config.js
-module.exports = {
+/** @type {import('tailwindcss').Config} */
+export default {
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+
   ],
   theme: {
     extend: {
       colors: {
-        primary: '#34967C',     // main green (used in navbar & buttons)
-        secondary: '#161117',   // dark text
-        accent: '#FFA800',      // yellow (used for rating stars)
-        neutral: '#F9F9F9',     // background of cards/filters
-        grayText: '#737373',    // subtitles and muted labels
-        shimmerStart: '#E6E6E6', // shimmer gradient start
-        shimmerEnd: '#EDEDED',   // shimmer gradient end
-        customGray: '#616161',
-      },
-      backgroundImage: {
-        shimmer: 'linear-gradient(to right, #E6E6E6, #EDEDED)',
+        p1: '#2EF2FF',
+        p2: '#34967C',
+        p3: '#F9F9F9',
+        p4: '#EAEDFF',
+        p5: '#161117',
+        s1: '#161117',
+        s2: '#161117',
+        s3: '#161117',
+        s4: '#161117',
+        s5: '#161117',
+        black: {
+          DEFAULT: '#161117',
+          100: '#05091D',
+        },
       },
       boxShadow: {
-        card: '0 4px 12px rgba(0, 0, 0, 0.05)',
-        cardHover: '0 8px 20px rgba(0, 0, 0, 0.1)',
-      },
-      borderRadius: {
-        card: '1rem',
+        100: '0px 4px 4px rgba(0, 0, 0, 0.25), 0px 16px 24px rgba(0, 0, 0, 0.25), inset 0px 3px 6px #1959AD',
+        200: '0px 4px 4px rgba(0, 0, 0, 0.25), 0px 16px 24px rgba(0, 0, 0, 0.25), inset 0px 4px 10px #3391FF',
+        300: '0px 4px 4px rgba(0, 0, 0, 0.25), 0px 16px 24px rgba(0, 0, 0, 0.25), inset 0px 3px 6px #1959AD',
+        400: 'inset 0px 2px 4px 0 rgba(255, 255, 255, 0.05)',
+        500: '0px 16px 24px rgba(0, 0, 0, 0.25), 0px -14px 48px rgba(40, 51, 111, 0.7)',
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+        sourceSans: ["'Source Sans Pro'", "sans-serif"],
+        quicksand: ["Quicksand", "sans-serif"],
+      },
+      transitionProperty: {
+        borderColor: 'border-color',
+      },
+      spacing: {
+        '1/5': '20%',
+        '2/5': '40%',
+        '3/5': '60%',
+        '4/5': '80%',
+        '3/20': '15%',
+        '7/20': '35%',
+        '9/20': '45%',
+        '11/20': '55%',
+        '13/20': '65%',
+        '15/20': '75%',
+        '17/20': '85%',
+        '19/20': '95%',
+        22: '88px',
+        100: '100px',
+        512: '512px',
+        330: '330px',
+        388: '388px',
+        400: '400px',
+        440: '440px',
+        640: '640px',
+        960: '960px',
+        1230: '1230px',
+      },
+      zIndex: {
+        1: '1',
+        2: '2',
+        4: '4',
+      },
+      lineHeight: {
+        12: '48px',
+      },
+      borderRadius: {
+        14: '14px',
+        20: '20px',
+        40: '40px',
+        half: '50%',
+        '7xl': '40px',
+      },
+      flex: {
+        50: '0 0 50%',
+        320: '1px 0 320px',
+        300: '0 0 300px',
+        540: '0 0 540px',
+        280: '0 0 280px',
+        256: '0 0 256px',
+        100: '0 0 100%',
       },
     },
   },
